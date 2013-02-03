@@ -1,11 +1,70 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<style>
+			body {
+				background-image:url("eiffel tower.jpg");
+				background-size:cover;
+				background-repeat:no-repeat;
+				margin: 0;
+			}
+			.centered{
+				 position: fixed;
+ 				 top: 20%;
+ 				 left: 20%;
+ 				 height:30px;
+			}
+			.search{
+				background-color:#eeeeec;
+				position:relative;
+				border: 5px solid #2e3436;
+				overflow: hidden;
+				height:70px;
+				width:450px;
+				border-radius: 15px;
+			}
+			.inp1 {
+				background-color: transparent;
+				position: absolute;
+				color: #d3d7cf;
+				font-size: 32px;
+				font-family:  Baskerville, Garamond, Georgia, serif;
+				font-style: italic;
+				width:350px;
+				outline:none;
+				float:left;
+				margin-top:10px;
+				margin-left:10px;
+				border-color: transparent;
+				border-bottom: 1px solid #555753;
+			}
+			img{
+  				  cursor: pointer;
+  				  height: 64px;
+  				  width: 64px;
+  				  float:right;
+  				  margin-right: 5px;
+  				  }
+			h1{
+				font-size: 36px;
+				font-family: Baskerville, Garamond, Georgia, serif;
+				color:black;
+				text-shadow: 0px 1px 3px #333;
+			}
+		</style>
 		<title>Rent a body</title>
 	</head>
 	<body>
-		<input type="text" name="user">
-		<input type="Submit" value="Search">
+		<div class = "centered">
+			<div>
+				<h1>Visit without travelling.</h1>
+				<h1>Discover. Meet. Rent a body.</h1>
+			</div>
+			<div class = "search">
+					<input class="inp1" type="text" name="user" value="Paris">
+					<img src="icon.png" align="middle">
+			</div>
+		</div>
 
 	</body>
 </html>
