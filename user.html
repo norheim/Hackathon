@@ -1,0 +1,165 @@
+<html>
+	<head>
+		<title>"Jean Pierre Larousse"</title>
+	</head>
+		<style>
+			body{
+				margin:0px;
+				background-image:url("eiffel tower.jpg");
+				background-size:cover;
+
+			}
+			.image{
+				height:170px;
+				border:4px solid white;
+				box-shadow: 3px 3px 5px #d3d7cf;
+				margin:20px;
+			}
+			#container{
+				margin-top: 20px;
+				margin-left: auto;
+				margin-right: auto;
+				padding:0px 20px;
+				overflow: hidden;
+				width:700px;
+				background-color: white;
+				padding:3px;
+				border-radius: 5px;
+				box-shadow: 3px 3px 5px #d3d7cf;
+			}
+			.proposed{
+				background: #81C6DD;
+				border: 3px solid blue;
+			}
+			.request{
+				background: #E9B64D;
+				border: 3px solid #E48743;
+			}
+			.top {
+				float:left;
+				background-color: #3465a4;
+				margin:10px 5px;
+				padding:10px;
+				border-radius: 15px;
+				border:2px solid #204a87;
+			}
+			#header{
+				margin-right: auto;
+				margin-left: auto;
+				margin-top: 10px;
+				width: 900px;
+				font-family:  Baskerville, Garamond, Georgia, serif;
+				color:#eeeeec;
+				font-size: 20px;
+				font-style: bold;
+				text-shadow: 0px 1px 3px white;
+				overflow:hidden;
+			}
+			.left{
+				float:left;
+			}
+			#right{
+				width:400px;
+				margin-left: 50px;
+				margin-top: 20px;
+			}
+			#bottom{
+				clear:both;
+				margin:20px;
+			}
+			.inline{
+				display: inline;
+			}
+			#time{
+				margin-left:40px;
+			}
+			.clickable{
+				cursor: pointer;
+			}
+			#skype{
+				font-size: 20px;
+				font-family:  Baskerville, Garamond, Georgia, serif;
+				font-style: italic;
+				margin-bottom: 10px;
+				margin-top: 10px;
+			}
+			#name{
+				font-size: 36px;
+				font-family: Baskerville, Garamond, Georgia, serif;
+				color:black;
+				text-shadow: 0px 1px 3px #333;
+				margin-bottom: 10px
+			}
+		</style>
+		<script type="text/javascript">
+        		function submit(n){
+        			var arr = ["search.html","index.html"];
+					window.location = arr[n]
+				} 
+    	</script>
+	<body>
+		<div id="header">
+				<div class="top clickable" id="user"> Jean Pierre Larousse </div>
+				<div onclick="submit(0)"  class="top clickable" id="location"> Paris, France </div>
+				<div class="top" id="settings"> Settings </div>
+				<div onclick="submit(1)" class="top clickable" id="signout"> Signout </div>
+		</div>
+		<div id="container">
+			<div class="left" id="left">	
+				<img class="image" src="face2.jpg">
+			</div>
+			<div class="left" id="right">
+				<div id="name">
+					Jean Pierre Larousse
+				</div>	
+				<div>	
+				<div class="inline" id="skype">
+					<a href="callto://johannes.nor/">larousse</a>
+				</div>
+				<div class="inline" id="time">
+					Choose Time Zone
+					<select>
+  						<option value="1">Berlin, Paris</option>
+  						<option value="0">London</option>
+  						<option value="-1">GMT -1</option>
+  						<option value="-2">GTM -2</option>
+					</select>
+				</div>	
+				</div>
+				<div class="left" id="About">
+					I love travelling and sharing tha places I enjoy with other people. I will usually do 1 or 2 rentals per week, and hope you guys enjoy what you see. 
+					But I also love exploring all those place I had only seen on documentaries on such a personal and interactive way. Rent a body is awesome!
+				</div>
+  			</div>
+  			<div id="bottom">
+  				<div id="proposed">Trips that other people can join or that you are willing to tour</div>
+  				<table>
+					<tr id="description" class="proposed">
+						<td>Location</td>
+						<td>User</td>
+						<td>Local time</td>
+						<td>Duration of tour</td>
+						<td>See it on the map</td>
+					</tr>
+					<tr id="2" class="request">
+						<td>Ile de la Cite and Pont Neuf</td>
+						<td class="user">Jean Pierre Larousse</td>
+						<td>TBD</td>
+						<td>1 hour long</td>
+						<td><img class="clickable" onclick="display(1)" src="blue-dot.gif"></td>
+					</tr>
+					<tr id="-1" class="">
+						<td colspan='4'>Trips that you have requested</td>
+					</tr>
+					<tr id="1" class="proposed">
+						<td>Tour Eiffel and Trocadero</td>
+						<td class="user">Louis Robert</td>
+						<td>Local time of the user</td>
+						<td>1 hour long</td>
+						<td><img class="clickable" onclick="display(0)" src="blue-dot.gif"></td>
+					</tr>
+				</table>
+  			</div>
+  		</div>
+	</body>
+</html>
