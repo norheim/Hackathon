@@ -1,262 +1,132 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<style>
-		.image{
-			width:300px;
-			height:200px;
-			border:4px solid #eeeeec;
-			box-shadow: 3px 3px 5px #d3d7cf;
-		}
-		body{
-			margin:0px;
-			background-image:url("eiffel tower.jpg");
-			background-size:cover;
 
-		}
+<head>
+    <title>Search Results</title>
+    <link href="search.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDC8GZbgK2icVkCwIZ7HGe_UPf6diuoiF8&sensor=true">
+    </script>
+    <script type="text/javascript">
+        var myCenter = new google.maps.LatLng(48.8742, 2.3470);
+         //var infowindow = new google.maps.InfoWindow({content:"Welcome to Paris"});
 
-		table{
-			border-collapse:collapse;
-		}
-		td{
-			padding-left: 20px;
-		}
+        function initialize() {
+            var mapOptions = {
+                center: new google.maps.LatLng(48.8742, 2.3470),
+                zoom: 8,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
-		#popularity{
-			font-family:  Baskerville, Garamond, Georgia, serif;
-			float:right;
-			margin-top: 5px;
-			margin-right: 20px
-		}
-		#header{
-			margin-right: auto;
-			margin-left: auto;
-			margin-top: 10px;
-			width: 850px;
-			font-family:  Baskerville, Garamond, Georgia, serif;
-			color:#eeeeec;
-			font-size: 20px;
-			font-style: bold;
-			text-shadow: 0px 1px 3px white;
-			overflow:hidden;
+            var marker = new google.maps.Marker({
+                position: myCenter,
+                //animation:google.maps.Animation.BOUNCE
+            });
+            marker.setMap(map)
+            //infowindow.open(map,marker);
+        }
 
-		}
-		.top {
-			float:left;
-			background-color: #3465a4;
-			margin:10px 5px;
-			padding:10px;
-			border-radius: 15px;
-			border:2px solid #204a87;
-		}
-		#top{
-			background:#d3d7cf;
-			overflow: hidden;
-			margin:5px 10px;
-			border:4px solid #eeeeec;
-			border-radius: 5px;
-			box-shadow: 3px 3px 5px #d3d7cf;
-		}
-		#left{
-			float:left;
-			width:310px;
-			height:400px;
-			margin:20px;
-			background-color: white;
-			padding:3px;
-			border-radius: 5px;
-			box-shadow: 3px 3px 5px #d3d7cf;
-		}
-		#right{
-			float:left;
-		}
-		#container{
-			overflow: hidden;
-		}
-		#map_canvas{
-			margin-left:20px;
-			margin-top: 20px;
-			border:4px solid #eeeeec;
-			border-radius: 5px;
-			box-shadow: 3px 3px 5px #d3d7cf;
-		}
+        function display(n) {
+            var point1 = new google.maps.LatLng(48.858539, 2.294855);
+            var point2 = new google.maps.LatLng(48.854625, 2.347662);
+            var points = [point1, point2]
+            var marker = new google.maps.Marker({
+                position: points[n],
+            });
+            marker.setMap(map);
+        }
 
-		#contents{
-			float:left;
-			width:300px;
-		}
-		#information{
-			margin-left: auto;
-			margin-right: auto;
-			padding:0px 20px;
-			overflow: hidden;
-			width:850px;
+        function submit(n) {
+            var arr = ["user.html", "index.html"];
+            window.location = arr[n]
+        }
+    </script>
+</head>
 
-		}
-		#cityname{
-				font-size: 36px;
-				font-family: Baskerville, Garamond, Georgia, serif;
-				color:black;
-				text-shadow: 0px 1px 3px #333;
-				float:left;
-		}
-		.bold{
-			font-weight: bold;
-		}
-		#wikipedia{
-			padding: 10px;
-		}
-		#bottom{
-			width:700px;
-			margin-right:auto;
-			margin-left:auto;
-			border:4px solid #eeeeec;
-			border-radius: 5px;
-			box-shadow: 3px 3px 5px #d3d7cf;
-		}
-		#bottom td{
-			width:150px;
-		}
-		.user{
-			font-weight: bold;
-			cursor: pointer;
-		}
+<body onload="initialize()">
+    <div id="header">
+        <div>
+            <div onclick="submit(0)" class="top clickable" id="user">Jean Pierre Larousse</div>
+            <div class="top clickable" id="location">Paris, France</div>
+            <div class="top" id="settings">Setting</div>
+            <div onclick="submit(1)" class="top clickable" id="signout">Signout</div>
+        </div>
+    </div>
+    <div>
+        <div id="information">
+            <div id="top">
+                <div id="cityname">
+                    <img style="margin-left:20px;" src="img/starmini.ico">Paris
+                </div>
+                <div id="popularity">
+                    <table>
+                        <tr>
+                            <td>Tours done</td>
+                            <td class="bold">29</td>
+                            <td>
+                                <img src="img/person.png">
+                            </td>
+                            <td class="bold">200</td>
+                        </tr>
 
-		.clickable{
-			cursor: pointer;
-		}
-
-		.proposed{
-			background: #81C6DD;
-			border: 3px solid blue;
-
-		}
-		.proposed td{
-			border-left: 1px dashed blue;
-		}
-		.proposed .user{
-			color:blue;
-		}
-
-		.request{
-			background: #E9B64D;
-			border: 3px solid #E48743;
-		}
-		.request td{
-			border-left: 1px dashed orange;
-		}
-		.request .user{
-			color:#A24526;
-		}
-
-
-		</style>
-		    <script type="text/javascript"  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDC8GZbgK2icVkCwIZ7HGe_UPf6diuoiF8&sensor=true">
-    		</script>
-        	<script type="text/javascript">
-        		var myCenter=new google.maps.LatLng(48.8742, 2.3470);
-        		//var infowindow = new google.maps.InfoWindow({content:"Welcome to Paris"});
-
-      			function initialize() {
-        			var mapOptions = {center: new google.maps.LatLng(48.8742, 2.3470), zoom: 8, mapTypeId: google.maps.MapTypeId.ROADMAP};
-        			map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
-
-        			var marker=new google.maps.Marker({
-  					position:myCenter,
-  					//animation:google.maps.Animation.BOUNCE
-  					});
-					marker.setMap(map)
-					//infowindow.open(map,marker);
-      			}
-      			function display(n){
-      				var point1=new google.maps.LatLng(48.858539,2.294855);
-      				var point2=new google.maps.LatLng(48.854625,2.347662);
-      				var points=[point1,point2]
-      				var marker=new google.maps.Marker({
-  					position:points[n],});
-  					marker.setMap(map);
-      			}
-        		function submit(n){
-        			var arr = ["user.html","index.html"];
-					window.location = arr[n]
-				} 
-    		</script>
-	<title>Search Results</title>
-	</head>
-	<body onload="initialize()">
-		<div id="header">
-			<div>
-				<div  onclick="submit(0)"  class="top clickable" id="user"> Jean Pierre Larousse </div>
-				<div class="top clickable" id="location"> Paris, France </div>
-				<div class="top" id="settings"> Setting </div>
-				<div onclick="submit(1)" class="top clickable" id="signout"> Signout </div>
-			</div>
-		</div>
-		<div>
-			<div id="information">
-				<div id="top">
-					<div id="cityname">
-						<img style="margin-left:20px;" src="star.ico">
-						Paris
-					</div>
-					<div id="popularity">
-						<table>
-							<tr><td>Tours done</td><td class="bold">29</td>
-							<td><img src="person.png"></td><td class="bold">200</td></tr>
-								
-						</table>
-					</div>
-				</div>
-				<div id="container">
-				<div id="left">	
-					<img class="image" src="Le Louvre.jpg">
-					<div id="wikipedia">
-						Paris is the capital and largest city of France. It is situated on the river Seine, in northern France, at the heart of the Ile-de-France region. The city of Paris, within its administrative limits (the 20 arrondissements), has a population of about 2,230,000. Its metropolitan area is one of the largest population centres in Europe, with more than 12 million inhabitants.
-					</div>
-				</div>
-				<div id="right">
-					<div id="map_canvas" style="width:450px; height:400px"></div>
-					    <script>
-						  /*  function hndlr(response) {
+                    </table>
+                </div>
+            </div>
+            <div id="container">
+                <div id="left">
+                    <img class="image" src="img/le_louvre.jpg">
+                    <div id="wikipedia">
+                        Paris is the capital and largest city of France. It is situated on the river Seine, in northern France, at the heart of the Ile-de-France region. The city of Paris, within its administrative limits (the 20 arrondissements), has a population of about 2,230,000. Its metropolitan area is one of the largest population centres in Europe, with more than 12 million inhabitants.
+                    </div>
+                </div>
+                <div id="right">
+                    <div id="map_canvas" style="width:450px; height:400px"></div>
+                    <script>
+                        /*  function hndlr(response) {
 						      	for (var i = 0; i < 4; i++) {
 						        	var item = response.items[i];
 						        	// in production code, item.htmlTitle should have the HTML entities escaped.
 						        	document.getElementById("content").innerHTML += "</br>" + item.htmlTitle;
 						      	}
 						    }*/
-						    </script>
-						    <script src="https://www.googleapis.com/customsearch/v1?key=AIzaSyDC8GZbgK2icVkCwIZ7HGe_UPf6diuoiF8&cx=017576662512468239146:omuauf_lfve&q=Paris&callback=hndlr">
-						    </script>
-				</div>
-  			</div>
-				<div id="bottom">
-					<div>
-						<table>
-							<tr id="description" class="proposed">
-								<td>Location</td>
-								<td>User</td>
-								<td>Local time</td>
-								<td>Duration of tour</td>
-								<td>See it on the map</td>
-							</tr>
-							<tr id="1" class="proposed">
-								<td>Tour Eiffel and Trocadero</td>
-								<td class="user">Louis Robert</td>
-								<td>Local time of the user</td>
-								<td>1 hour long</td>
-								<td><img class="clickable" onclick="display(0)" src="blue-dot.gif"></td>
-							</tr>
-							<tr id="2" class="request">
-								<td>Ile de la Cite and Pont Neuf</td>
-								<td class="user" onclick="submit(0)">Jean Pierre Larousse</td>
-								<td>TBD</td>
-								<td>1 hour long</td>
-								<td><img class="clickable" onclick="display(1)" src="blue-dot.gif"></td>
-							</tr>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</body>
+                    </script>
+                    <script src="https://www.googleapis.com/customsearch/v1?key=AIzaSyDC8GZbgK2icVkCwIZ7HGe_UPf6diuoiF8&cx=017576662512468239146:omuauf_lfve&q=Paris&callback=hndlr">
+                    </script>
+                </div>
+            </div>
+            <div id="bottom">
+                <div>
+                    <table>
+                        <tr id="description" class="proposed">
+                            <td>Location</td>
+                            <td>User</td>
+                            <td>Local time</td>
+                            <td>Duration of tour</td>
+                            <td>See it on the map</td>
+                        </tr>
+                        <tr id="1" class="proposed">
+                            <td>Tour Eiffel and Trocadero</td>
+                            <td class="user">Louis Robert</td>
+                            <td>Local time of the user</td>
+                            <td>1 hour long</td>
+                            <td>
+                                <img class="clickable" onclick="display(0)" src="img/blue_maptag.gif">
+                            </td>
+                        </tr>
+                        <tr id="2" class="request">
+                            <td>Ile de la Cite and Pont Neuf</td>
+                            <td class="user" onclick="submit(0)">Jean Pierre Larousse</td>
+                            <td>TBD</td>
+                            <td>1 hour long</td>
+                            <td>
+                                <img class="clickable" onclick="display(1)" src="img/blue_maptag.gif">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
